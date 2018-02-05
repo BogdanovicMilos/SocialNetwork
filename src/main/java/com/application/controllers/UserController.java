@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 /**
  * Created by Milos on 2/5/2018.
@@ -31,5 +33,9 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @GetMapping("/{id}/friends")
+    public Iterable<User> getUserFriends(@PathVariable("id") long id){
+        return userService.getFriendsForUser(id);
+    }
 
 }

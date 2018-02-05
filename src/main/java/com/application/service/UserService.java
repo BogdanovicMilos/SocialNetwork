@@ -26,13 +26,15 @@ public class UserService {
     public User getUserById(long id){
         return userRepository.findOne(id);
     }
-    // To do
-    public List<User> getUserFriends(User user){
+
+    public List<User> getFriendsForUser(long id){
+
+        User n = getUserById(id);
 
         List<User> tempUsers = new ArrayList<>();
 
-        for (int i = 0; i < user.friends.length; i++) {
-            int userID = user.friends[i];
+        for (int i = 0; i < n.friends.length; i++) {
+            int userID = n.friends[i];
             User u = getUserById(userID);
             tempUsers.add(u);
         }
