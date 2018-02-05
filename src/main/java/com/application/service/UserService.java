@@ -26,7 +26,7 @@ public class UserService {
     public User getUserById(long id){
         return userRepository.findOne(id);
     }
-
+    // To do
     public List<User> getUserFriends(User user){
 
         List<User> tempUsers = new ArrayList<>();
