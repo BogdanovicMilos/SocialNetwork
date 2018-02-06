@@ -1,11 +1,9 @@
 package com.application.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Milos on 2/5/2018.
