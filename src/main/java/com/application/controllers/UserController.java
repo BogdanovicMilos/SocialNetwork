@@ -34,8 +34,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}/friends")
-    public Iterable<User> getUserFriends(@PathVariable("id") long id){
-        return userService.getFriendsForUser(id);
+    public Iterable<User> getDirectFriendsForUser(@PathVariable("id") long id){
+        return userService.getDirectFriendsForUser(id);
+    }
+
+    @GetMapping("/{id}/friends-of-friends")
+    public Iterable<User> getFriendsOfFriendsForUser(@PathVariable("id") long id){
+        return userService.getFriendsOfFriendsForUser(id);
     }
 
 }

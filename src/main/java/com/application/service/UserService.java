@@ -27,18 +27,33 @@ public class UserService {
         return userRepository.findOne(id);
     }
 
-    public List<User> getFriendsForUser(long id){
+    public List<User> getDirectFriendsForUser(long id){
+
+        List<User> friends = new ArrayList<>();
 
         User n = getUserById(id);
-
-        List<User> tempUsers = new ArrayList<>();
 
         for (int i = 0; i < n.friends.length; i++) {
             int userID = n.friends[i];
             User u = getUserById(userID);
-            tempUsers.add(u);
+            friends.add(u);
         }
-        return tempUsers;
+
+        return friends;
+    }
+
+    public List<User> getFriendsOfFriendsForUser(long id){
+
+        List<User> friendsOfFriends = new ArrayList<>();
+        List<User> friends = getDirectFriendsForUser(id);
+
+        for(int i = 0; i < friends.size(); i++) {
+            User user = friends.get(i);
+            List<User> fof = getDirectFriendsForUser(user.id);
+            friendsOfFriends.addAll(fof);
+        }
+
+        return friendsOfFriends;
     }
 
     public User save(User user) {
